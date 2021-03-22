@@ -41,7 +41,7 @@ exports.handler = async (event, context, callback) => {
     const serviceName = task.group.split(":")[1]
     console.log(`task:${serviceName} public-id: ${taskPublicIp}`)
 
-    const containerDomain = `${serviceName}.${domain}`
+    const containerDomain = `${domain}`
     const recordSet = createRecordSet(containerDomain, taskPublicIp)
 
     await updateDnsRecord(clusterName, hostedZoneId, recordSet)
